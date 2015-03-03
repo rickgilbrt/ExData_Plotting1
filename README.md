@@ -1,4 +1,48 @@
+# Introduction to Rick's solution to Course Project 1
+
+### Description of the solution scripts (not quite pseudocode)
+
+The solution files for this project are 4 very similar R scripts.
+
+The steps are as follows:
+* Define a function, **capwords** to apply initial capital letters to phrases.  There may be a direct R function for this, but I found this function defined in R Help, and decided to use it to meet some of the title and axis label requirements.
+* Check for the presence of the source file or it's zipped form in the working directory.  If the source data are not available, they are downloaded and unzipped from the source specified in the assignment description.
+* Read and parse the source data using read.table, converting any "?" values to NA's.
+* Subset the data to the dates of interest.
+* Create a datetime field, **sampleTime**, which is needed for the abscissa of some of the plots.  Note that the resulting datetimes are labeled as "PST."  I did not check to see if the original time data were indeed PST, but that would not have changed the plots in this exercise.
+* Reorder and subset the columns of the dataset to those required for the plots.
+* Check for the presence of a png file having the required file name.  If it exists, try to delete it.  This step will fail if the file is open in another application, and the script will not run properly.
+* Open a png device with the file name Plot***n***.png, where ***n*** is the same as the R script Plot file number.
+* Generate the plot
+* Close the png device
+
+### The four script files are
+* Plot1.R
+* Plot2.R
+* Plot3.R
+* Plot4.R
+
+Each script can be run by sourcing it to R, e.g., **source(Plot1.R)**.
+
+### The resulting plots are in the following files:
+* Plot1.png
+* Plot2.png
+* Plot3.png
+* Plot4.png
+
+### Notes
+* Because I read in the whole file and subset it, this script takes a long time to run.  I did not explore the option of reading in only he two relevant days from the source file.
+* As noted above, these scripts will fail if a file with the target name exists *AND* is open in the working directory.
+* Also, if a script fails for any reason once a png is opened, there is no code to close the png device.  If the device is not closed manually from the console, subsequent runs of the script will also fail due to the png file being open in R.
+
+## End of Rick's solution notes
+Beyond this are the original README notes from Roger Peng's repo
+
+## ===================================================
+
+
 ## Introduction
+### The remainder of this file is 
 
 This assignment uses data from
 the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
